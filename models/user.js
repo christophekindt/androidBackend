@@ -1,0 +1,20 @@
+var mongoose = require("mongoose");
+
+var userSchema = mongoose.Schema({
+  email: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  password: {
+    type: String,
+    required: true
+  },
+  score: Number,
+  friends: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'user'
+  }]
+});
+
+mongoose.model('user', userSchema);
